@@ -1,0 +1,68 @@
+// --- TIMELESS (The Weeknd) - FINAL FULL VERSION ---
+// Reconstructed by dheepssupreme
+
+// 1. LOAD SAMPLE (GITHUB RAW LINK)
+// Mengambil file audio langsung dari repo GitHub kamu
+samples({
+  'myhat': 'https://raw.githubusercontent.com/soekanta/timeless_hihat/main/117_Timeless%20Hi-hat.wav'
+})
+
+// 2. TEMPO (Dari screenshot image_44c3c6)
+setcpm(120/4)
+
+
+// LAYER 1: BASSLINE
+$: note("g1@3 b1 d2@2 f#2@2 g2@3 b2 d3@2 f#3@2")
+    .sound("gm_lead_8_bass_lead")
+    .decay(0.4)
+    .lpf(2700)
+    .room(0.4)
+    .gain(0.5)
+    .sustain(0)
+    .color("blue")
+    ._pitchwheel()
+
+$: note("[~ ~ ~ a4] [g4 f#4 d4 [d4 b3]] ~ ~")
+    .sound("gm_lead_8_bass_lead")
+    .slow(4)
+    .late(0.13)
+    .delay(0.5)
+    .decay(0.2)
+    .hpf(500)
+    .color("pink")
+    ._pianoroll()
+
+   // LAYER 3: HIGH LEAD 
+$: note("~ ~ [~ g6] [d6 f#5] ~ ~ [~ a6] [d6 ~]").color("magenta")
+    .sound("gm_lead_2_sawtooth")
+    .slow(2)
+    .room(7)
+    .lpf(2200)
+    .gain(0.04)
+    .early(0.009)
+    ._spiral({ steady: .96 })
+  
+
+$: note("g3, b3, d3, f#3") 
+    .sound("gm_pad_warm")
+    .slow(2)
+    .room(5)
+    .attack(2)
+    .decay(4)
+    .lpf(3000)
+    .gain(0.07)
+    .color("white")
+    .gain(.07)
+    ._scope()
+
+$: sound("[myhat myhat myhat ~] [myhat ~ myhat ~] [myhat myhat myhat ~] <[~ myhat] [myhat ~]>")
+    .lpf(5000)
+    .gain(1.5)
+    .color("white")
+    ._scope()
+$: note("[g2 [~ g2] ~ [g2 g2]] [[~ e2] e2 [d2 d2] ~]") 
+    .sound("rolandtr808_bd")
+    .slow(2)
+    .gain(2)
+    .color("red")
+    ._pitchwheel()
